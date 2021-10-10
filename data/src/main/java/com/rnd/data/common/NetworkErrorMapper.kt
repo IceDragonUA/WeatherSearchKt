@@ -14,44 +14,44 @@ object NetworkErrorMapper {
         Timber.e(throwable)
         return when (throwable) {
             is NetworkApiException -> {
-                when (val errorCode = throwable.error?.result?.error?.code ?: 0) {
+                when (val errorCode = throwable.error?.code ?: 0) {
                     401 -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.Unauthorized
                     )
                     403 -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.Forbidden
                     )
                     404 -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.NotFound
                     )
                     422 -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.ValidationFailed
                     )
                     500 -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.ServerError
                     )
                     501 -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.LocationRestriction
                     )
                     in 400 until 600 -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.BadResponse
                     )
                     else -> ErrorModel(
-                        message = throwable.error?.result?.error?.message,
+                        message = throwable.error?.message,
                         code = errorCode,
                         errorStatus = ErrorStatus.NotDefined
                     )

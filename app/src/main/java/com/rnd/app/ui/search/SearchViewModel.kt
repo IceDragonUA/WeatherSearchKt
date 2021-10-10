@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.rnd.app.common.base.BaseViewModel
 import com.rnd.app.extension.Event
+import com.rnd.domain.core.Failure
 import com.rnd.domain.core.Success
 import com.rnd.domain.model.SearchData
 import com.rnd.domain.usecase.SearchUseCase
@@ -50,8 +51,9 @@ class SearchViewModel : BaseViewModel() {
 
                 isLoading.postValue(Event(false))
             }
-            else -> {
-                Timber.e("error fetch my data")
+            is Failure -> {
+                items.postValue(mutableListOf())
+                Timber.e("code: ${searchResult.error.code}, message: ${searchResult.error.message}")
             }
         }
     }
