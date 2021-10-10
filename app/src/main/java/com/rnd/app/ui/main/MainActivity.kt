@@ -2,12 +2,12 @@ package com.rnd.app.ui.main
 
 import android.os.Bundle
 import com.rnd.app.R
+import com.rnd.app.common.base.BaseToolbarWrapper
 import com.rnd.app.databinding.ActivityMainBinding
-import com.rnd.app.ui.main.toolbar.MainActivityToolbarWrapper
 import com.rnd.app.ui.main.toolbar.SearchViewListener
 import com.rnd.app.viewBinding.activity.viewBinding
 
-class MainActivity : MainNavigationActivity(), MainActivityToolbarWrapper{
+class MainActivity : MainNavigationActivity(), BaseToolbarWrapper {
 
     override fun getNavControllerLayoutRes() = R.id.navHostFragment
 
@@ -24,16 +24,5 @@ class MainActivity : MainNavigationActivity(), MainActivityToolbarWrapper{
 
     override fun setSearchViewListener(searchListener: SearchViewListener) {
         bindingView.toolbar.setSearchViewListener(searchListener)
-    }
-
-    override fun isToolbarTransparent(isTransparent: Boolean) {
-        bindingView.toolbar.isToolbarTransparent(isTransparent)
-        if (isTransparent) {
-            bindingView.fragmentContainer.setPadding(0, 0, 0, 0)
-        } else {
-            bindingView.toolbar.post {
-                bindingView.fragmentContainer.setPadding(0, bindingView.toolbar.height, 0, 0)
-            }
-        }
     }
 }

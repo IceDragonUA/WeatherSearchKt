@@ -1,11 +1,9 @@
 package com.rnd.app.ui.main.toolbar
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import com.rnd.app.R
 import com.rnd.app.extension.gone
 import com.rnd.app.extension.showSoftKeyboard
@@ -32,13 +30,5 @@ class MainActivityToolbar @JvmOverloads constructor(
 
     fun hideAll() {
         viewSearch.gone()
-    }
-
-    fun isToolbarTransparent(isTransparent: Boolean) {
-        if (isTransparent) {
-            container.setBackgroundColor(Color.TRANSPARENT)
-        } else {
-            container.setBackgroundColor(ContextCompat.getColor(context, R.color.color_grey))
-        }
     }
 }

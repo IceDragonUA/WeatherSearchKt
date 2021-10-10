@@ -5,14 +5,14 @@ import android.view.View
 import com.rnd.app.R
 import com.rnd.app.common.base.BaseFragmentNavigationCommander
 import com.rnd.app.common.base.BaseFragmentNavigator
+import com.rnd.app.common.base.BaseToolbarWrapper
 import com.rnd.app.databinding.FragmentSearchBinding
-import com.rnd.app.ui.main.toolbar.MainActivityToolbarWrapper
 import com.rnd.app.ui.main.toolbar.SearchViewListener
 import com.rnd.app.viewBinding.fragment.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment:
-    BaseFragmentNavigator<BaseFragmentNavigationCommander, MainActivityToolbarWrapper>(),
+    BaseFragmentNavigator<BaseFragmentNavigationCommander, BaseToolbarWrapper>(),
     SearchViewListener {
 
     override fun getLayoutRes() = R.layout.fragment_search
@@ -26,7 +26,6 @@ class SearchFragment:
 
         toolbarWrapper {
             hideAll()
-            isToolbarTransparent(false)
             showSearchView()
             setSearchViewListener(this@SearchFragment)
         }
