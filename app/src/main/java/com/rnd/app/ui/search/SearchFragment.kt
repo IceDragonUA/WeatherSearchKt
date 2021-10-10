@@ -2,7 +2,6 @@ package com.rnd.app.ui.search
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import com.rnd.app.R
 import com.rnd.app.common.base.BaseFragmentNavigationCommander
 import com.rnd.app.common.base.BaseFragmentNavigator
@@ -34,8 +33,8 @@ class SearchFragment:
     }
 
     override fun subscribeToLivesData() {
-        viewModel.items.observe(viewLifecycleOwner, Observer {
-
+        viewModel.items.observe(viewLifecycleOwner, {
+            bindingView.weatherGrid.adapter?.items = it
         })
     }
 
@@ -44,6 +43,6 @@ class SearchFragment:
     }
 
     override fun searchClearBtnClicked() {
-
+        viewModel.search("")
     }
 }

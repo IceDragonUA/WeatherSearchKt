@@ -15,7 +15,7 @@ class SearchViewModel : BaseViewModel() {
 
     private val searchUseCase: SearchUseCase by inject()
 
-    val items = MutableLiveData<SearchData>()
+    val items = MutableLiveData<MutableList<SearchData>>()
 
     fun search(query: String) {
         synchronized(this) {
@@ -41,9 +41,12 @@ class SearchViewModel : BaseViewModel() {
             is Success -> {
                 val list = mutableListOf<SearchData>()
                 searchResult.payload?.let { data ->
-
+                    list.add(SearchData(1))
+                    list.add(SearchData(2))
+                    list.add(SearchData(3))
+                    list.add(SearchData(4))
                 }
-//                items.postValue(listOf())
+                items.postValue(list)
 
                 isLoading.postValue(Event(false))
             }
