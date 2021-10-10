@@ -33,7 +33,7 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
 
         fun bind(item: SearchData) {
             itemBinding.apply {
-                tvTitle.text = item.id.toString()
+                tvTitle.text = item.name.toString()
             }
         }
     }

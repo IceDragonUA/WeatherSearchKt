@@ -9,9 +9,15 @@ data class RemoteSearchDataResponse(
 data class RemoteListItemResponse(
     @SerializedName("id") val id: Int?,
     @SerializedName("name") val name: String?,
+    @SerializedName("coord") val coord: RemoteCoordResponse?,
     @SerializedName("main") val main: RemoteMainResponse?,
     @SerializedName("sys") val sys: RemoteCountryResponse?,
-    @SerializedName("weather") val weather: RemoteWeatherResponse?,
+    @SerializedName("weather") val weather: List<RemoteWeatherResponse>?,
+)
+
+data class RemoteCoordResponse(
+    @SerializedName("lat") val lat: Float?,
+    @SerializedName("lon") val lon: Float?,
 )
 
 data class RemoteMainResponse(

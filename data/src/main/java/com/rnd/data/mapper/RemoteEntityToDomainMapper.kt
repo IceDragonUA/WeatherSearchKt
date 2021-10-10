@@ -2,10 +2,7 @@ package com.rnd.data.mapper
 
 import com.rnd.data.common.DataMapper
 import com.rnd.data.datasource.remote.model.RemoteSearchDataResponse
-import com.rnd.domain.model.Country
-import com.rnd.domain.model.Main
 import com.rnd.domain.model.SearchData
-import com.rnd.domain.model.Weather
 
 class RemoteEntityToDomainMapper {
 
@@ -18,17 +15,13 @@ class RemoteEntityToDomainMapper {
                         SearchData(
                             id = it.id,
                             name = it.name,
-                            main = Main(
-                                temp = it.main?.temp
-                            ),
-                            sys = Country(
-                                country = it.sys?.country
-                            ),
-                            weather = Weather(
-                                main = it.weather?.main,
-                                description = it.weather?.description,
-                                icon = it.weather?.icon
-                            )
+                            temp = it.main?.temp,
+                            country = it.sys?.country,
+                            shortDescription = it.weather?.first()?.main,
+                            longDescription = it.weather?.first()?.description,
+                            latitude = it.coord?.lat,
+                            longitude = it.coord?.lon,
+                            icon = it.weather?.first()?.icon
                         )
                     )
                 }
