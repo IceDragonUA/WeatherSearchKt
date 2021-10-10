@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">WEATHER</string>
+
+    <!-- search -->
+    <string name="search_toolbar_hint">Введите страну</string>
+
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_grey_action_button" >
+
+    <ImageView
+        android:id="@+id/ivSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_m"
+        app:srcCompat="@drawable/navigation_icon_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_m"
+        android:layout_marginEnd="@dimen/margin_m"
+        android:background="@null"
+        tools:hint="@string/search_toolbar_hint"
+        android:paddingLeft="@dimen/padding_s"
+        android:paddingRight="@dimen/padding_s"
+        android:textColor="@color/color_white"
+        android:textColorHint="@color/color_white_30"
+        android:textSize="@dimen/font_size_large"
+        android:imeOptions="actionSearch"
+        android:maxLines="1"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/ivClear"
+        app:layout_constraintTop_toTopOf="@+id/ivSearch"
+        app:layout_constraintBottom_toBottomOf="@+id/ivSearch"
+        app:layout_constraintStart_toEndOf="@+id/ivSearch" />
+
+    <ImageView
+        android:id="@+id/ivClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_sm"
+        android:padding="@dimen/margin_s"
+        app:srcCompat="@drawable/ic_search_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivSearch"
+        app:layout_constraintBottom_toBottomOf="@+id/ivSearch"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#003dff</color>
+    <color name="colorPrimaryVariant">#3462fe</color>
+    <color name="colorSecondary">#FFFFFF</color>
+
+    <color name="colorSplashScreen">#3086e3</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorBackground">#121315</color>
+    <color name="colorSecondaryText">#3F3F3F</color>
+
+    <color name="main_blue">#0099FF</color>
+    <color name="main_black">#222224</color>
+    <color name="main_dark_blue">#1C2C3C</color>
+
+
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_white_4">#0AFFFFFF</color>
+    <color name="color_white_10">#1AFFFFFF</color>
+    <color name="color_white_15">#26FFFFFF</color>
+    <color name="color_white_12">#1FFFFFFF</color>
+    <color name="color_white_30">#4DFFFFFF</color>
+    <color name="color_white_50">#80FFFFFF</color>
+    <color name="color_white_70">#B3FFFFFF</color>
+
+    <color name="color_black_15">#26000000</color>
+    <color name="color_black_30">#4D000000</color>
+    <color name="color_black_50">#80000000</color>
+    <color name="color_black_60">#99000000</color>
+    <color name="color_black_80">#CC000000</color>
+
+    <color name="color_grey">#343537</color>
+    <color name="color_grey_80">#CC343537</color>
+    <color name="color_grey_40">#66343537</color>
+    <color name="color_grey_5">#0D343537</color>
+    <color name="color_grey_action_button">#4C4C50</color>
+
+    <color name="color_yellow">#FFCC00</color>
+
+    <color name="color_red">#D32F2F</color>
+
+    <color name="color_orange">#FF8A00</color>
+
+    <color name="color_turquoise">#02E4C9</color>
+    <color name="color_salad">#00FF99</color>
+    <color name="color_shark">#222224</color>
+
+    <color name="yellow_bold">#FF8A00</color>
+    <color name="orange_light">#FF9900</color>
+    <color name="orange_bold">#CE004A</color>
+    <color name="bold_green">#009C6D</color>
+    <color name="green">#04AD15</color>
+    <color name="default_channels_color">#ACACAC</color>
+
+</resources>
