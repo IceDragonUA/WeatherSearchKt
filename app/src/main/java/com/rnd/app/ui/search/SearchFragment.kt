@@ -40,8 +40,4 @@ class SearchFragment:
     override fun searchQuery(text: String) {
         viewModel.search(text)
     }
-
-    override fun searchClearBtnClicked() {
-        viewModel.search("")
-    }
 }

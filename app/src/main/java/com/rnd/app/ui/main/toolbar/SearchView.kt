@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.view_search.view.*
 
 interface SearchViewListener {
     fun searchQuery(text: String) {}
-    fun searchClearBtnClicked() {}
 }
 
 class SearchView @JvmOverloads constructor(
@@ -33,10 +32,6 @@ class SearchView @JvmOverloads constructor(
     var searchListener: SearchViewListener? = null
 
     private fun initClicks() {
-        ivClear.setOnClickListener {
-            etSearch.setText("")
-            searchListener?.searchClearBtnClicked()
-        }
         ivSearch.setOnClickListener {
             etSearch.text?.toString()?.let {
                 searchListener?.searchQuery(it)
