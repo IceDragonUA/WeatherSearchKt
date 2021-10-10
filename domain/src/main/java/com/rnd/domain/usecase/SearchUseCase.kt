@@ -7,7 +7,7 @@ import com.rnd.domain.repository.SearchRepository
 
 class SearchUseCase(private val searchRepository: SearchRepository) {
 
-    fun searchData(q: String): Result<SearchData?, ErrorModel> {
+    fun searchData(q: String): Result<List<SearchData>?, ErrorModel> {
         return searchRepository.searchData(q)
     }
 }

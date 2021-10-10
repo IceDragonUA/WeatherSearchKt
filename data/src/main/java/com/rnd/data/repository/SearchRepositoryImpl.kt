@@ -13,7 +13,7 @@ class SearchRepositoryImpl(
     private val mapper: RemoteEntityToDomainMapper
 ) : SearchRepository {
 
-    override fun searchData(q: String): Result<SearchData?, ErrorModel> {
+    override fun searchData(q: String): Result<List<SearchData>?, ErrorModel> {
         return api.search(q).safeExecute(mapper.mapSearchDataResponse())
     }
 }

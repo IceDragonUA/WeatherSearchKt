@@ -6,6 +6,6 @@ import com.rnd.domain.model.SearchData
 
 interface SearchRepository {
 
-    fun searchData(q: String): Result<SearchData?, ErrorModel>
+    fun searchData(q: String): Result<List<SearchData>?, ErrorModel>
 
 }

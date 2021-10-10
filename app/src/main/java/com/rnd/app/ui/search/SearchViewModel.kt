@@ -42,10 +42,7 @@ class SearchViewModel : BaseViewModel() {
             is Success -> {
                 val list = mutableListOf<SearchData>()
                 searchResult.payload?.let { data ->
-                    list.add(SearchData(1))
-                    list.add(SearchData(2))
-                    list.add(SearchData(3))
-                    list.add(SearchData(4))
+                    list.addAll(data)
                 }
                 items.postValue(list)
 
