@@ -87,4 +87,6 @@
     <!--Width-->
     <dimen name="width_empty">0dp</dimen>
 
+    <dimen name="default_radius">8dp</dimen>
+
 </resources>

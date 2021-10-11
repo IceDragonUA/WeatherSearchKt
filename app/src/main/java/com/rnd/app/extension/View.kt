@@ -29,12 +29,3 @@ fun View.showSoftKeyboard(show: Boolean) {
     if (show) imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
     else imm?.hideSoftInputFromWindow(this.windowToken, 0)
 }
-
-fun View.padding(
-    left: Int = paddingLeft,
-    top: Int = paddingTop,
-    right: Int = paddingRight,
-    bottom: Int = paddingBottom
-) {
-    setPadding(left, top, right, bottom)
-}

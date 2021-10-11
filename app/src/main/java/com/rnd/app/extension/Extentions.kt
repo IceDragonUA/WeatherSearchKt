@@ -13,7 +13,7 @@ fun FragmentActivity.root() = this as? MainActivity
 
 fun String?.defIfNull() = this ?: ""
 fun Int?.defIfNull(def: Int = 0) = this ?: def
-fun Boolean?.defIfNull() = this ?: false
+fun Float?.defIfNull(def: Float = 0.0f) = this ?: def
 
 fun ImageView.loadFromUrl(url: String) {
     GlideApp.with(this.context.applicationContext)
