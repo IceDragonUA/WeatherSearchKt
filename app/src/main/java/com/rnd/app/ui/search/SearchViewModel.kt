@@ -6,17 +6,17 @@ import com.rnd.app.common.base.BaseViewModel
 import com.rnd.app.extension.Event
 import com.rnd.domain.core.Failure
 import com.rnd.domain.core.Success
-import com.rnd.domain.model.SearchData
-import com.rnd.domain.usecase.SearchUseCase
+import com.rnd.domain.model.SearchResult
+import com.rnd.domain.interactor.SearchInteractor
 import kotlinx.coroutines.*
 import org.koin.core.inject
 import timber.log.Timber
 
 class SearchViewModel : BaseViewModel() {
 
-    private val searchUseCase: SearchUseCase by inject()
+    private val searchUseCase: SearchInteractor by inject()
 
-    val items = MutableLiveData<MutableList<SearchData>>()
+    val items = MutableLiveData<MutableList<SearchResult>>()
 
     fun search(query: String) {
         synchronized(this) {
@@ -40,7 +40,7 @@ class SearchViewModel : BaseViewModel() {
 
         when (val searchResult = searchResult.await()) {
             is Success -> {
-                val list = mutableListOf<SearchData>()
+                val list = mutableListOf<SearchResult>()
                 searchResult.payload?.let { data ->
                     list.addAll(data)
                 }

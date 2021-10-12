@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rnd.app.databinding.ViewItemBinding
 import com.rnd.app.extension.defIfNull
 import com.rnd.app.extension.loadFromUrl
-import com.rnd.domain.model.SearchData
+import com.rnd.domain.model.SearchResult
 import kotlin.properties.Delegates
 
 
@@ -16,7 +16,7 @@ import kotlin.properties.Delegates
  */
 class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
-    var items: MutableList<SearchData> by Delegates.observable(mutableListOf()) { _, _, _ ->
+    var items: MutableList<SearchResult> by Delegates.observable(mutableListOf()) { _, _, _ ->
         notifyDataSetChanged()
     }
 
@@ -27,34 +27,21 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
         holder.bind(getItem(position))
     }
 
-    private fun getItem(position: Int): SearchData = items[position]
+    private fun getItem(position: Int): SearchResult = items[position]
 
     override fun getItemCount(): Int = items.count()
 
     inner class WeatherViewHolder(private val itemBinding: ViewItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun bind(item: SearchData) {
+        fun bind(item: SearchResult) {
             itemBinding.apply {
-                tvName.text = item.name.toString()
-                tvTemp.text = StringBuilder().apply {
-                    append(item.temp?.defIfNull()?.minus(272.15)?.toInt())
-                    append("°C")
-                }.toString()
-                tvCountry.text = item.country.toString()
-                tvShortDescription.text =
-                    StringBuilder().apply {
-                        append(item.shortDescription.toString())
-                        append(",")
-                    }.toString()
-                tvLongDescription.text = item.longDescription.toString()
-                tvLatitude.text = StringBuilder().apply {
-                    append("Latitude: ")
-                    append(item.latitude)
-                }.toString()
-                tvLongitude.text = StringBuilder().apply {
-                    append("Longitude: ")
-                    append(item.longitude)
-                }.toString()
+                tvName.text = item.name
+                tvTemp.text = item.temp
+                tvCountry.text = item.country
+                tvShortDescription.text = item.shortDescription
+                tvLongDescription.text = item.longDescription
+                tvLatitude.text = item.latitude
+                tvLongitude.text = item.longitude
                 ivIcon.loadFromUrl(item.icon.defIfNull())
             }
         }

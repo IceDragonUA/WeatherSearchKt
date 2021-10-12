@@ -1,12 +1,8 @@
 package com.rnd.data.common
 
 import com.rnd.domain.core.ErrorModel
-import com.rnd.domain.core.ErrorStatus
 import retrofit2.HttpException
 import timber.log.Timber
-import java.io.IOException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
 
 object NetworkErrorMapper {
 
@@ -17,43 +13,35 @@ object NetworkErrorMapper {
                 when (val errorCode = throwable.error?.code ?: 0) {
                     401 -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.Unauthorized
+                        code = errorCode
                     )
                     403 -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.Forbidden
+                        code = errorCode
                     )
                     404 -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.NotFound
+                        code = errorCode
                     )
                     422 -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.ValidationFailed
+                        code = errorCode
                     )
                     500 -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.ServerError
+                        code = errorCode
                     )
                     501 -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.LocationRestriction
+                        code = errorCode
                     )
                     in 400 until 600 -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.BadResponse
+                        code = errorCode
                     )
                     else -> ErrorModel(
                         message = throwable.error?.message,
-                        code = errorCode,
-                        errorStatus = ErrorStatus.NotDefined
+                        code = errorCode
                     )
                 }
             }
@@ -62,61 +50,40 @@ object NetworkErrorMapper {
                 when (throwable.code()) {
                     401 -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.Unauthorized
+                        throwable.code()
                     )
                     403 -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.Forbidden
+                        throwable.code()
                     )
                     404 -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.NoConnection
+                        throwable.code()
                     )
                     422 -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.ValidationFailed
+                        throwable.code()
                     )
                     500 -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.ServerError
+                        throwable.code()
                     )
                     501 -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.LocationRestriction
+                        throwable.code()
                     )
                     in 400 until 600 -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.BadResponse
+                        throwable.code()
                     )
                     else -> ErrorModel(
                         throwable.message(),
-                        throwable.code(),
-                        ErrorStatus.NotDefined
+                        throwable.code()
                     )
                 }
             }
 
-            // handle api call timeout error
-            is SocketTimeoutException -> {
-                ErrorModel(errorStatus = ErrorStatus.Timeout)
-            }
-
-            is UnknownHostException -> {
-                ErrorModel(errorStatus = ErrorStatus.NoConnection)
-            }
-
-            // handle connection error
-            is IOException -> {
-                ErrorModel(errorStatus = ErrorStatus.NoConnection)
-            }
-            else -> ErrorModel(errorStatus = ErrorStatus.NotDefined)
+            else -> ErrorModel()
         }
     }
 }

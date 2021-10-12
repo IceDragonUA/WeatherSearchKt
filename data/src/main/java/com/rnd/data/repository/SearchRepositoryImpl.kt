@@ -1,11 +1,11 @@
 package com.rnd.data.repository
 
 import com.rnd.data.common.safeExecute
-import com.rnd.data.datasource.remote.api.ApiEndpoint
+import com.rnd.data.datasource.api.ApiEndpoint
 import com.rnd.data.mapper.RemoteEntityToDomainMapper
 import com.rnd.domain.core.ErrorModel
 import com.rnd.domain.core.Result
-import com.rnd.domain.model.SearchData
+import com.rnd.domain.model.SearchResult
 import com.rnd.domain.repository.SearchRepository
 
 class SearchRepositoryImpl(
@@ -13,7 +13,7 @@ class SearchRepositoryImpl(
     private val mapper: RemoteEntityToDomainMapper
 ) : SearchRepository {
 
-    override fun searchData(q: String): Result<List<SearchData>?, ErrorModel> {
+    override fun searchData(q: String): Result<List<SearchResult>?, ErrorModel> {
         return api.search(q).safeExecute(mapper.mapSearchDataResponse())
     }
 }

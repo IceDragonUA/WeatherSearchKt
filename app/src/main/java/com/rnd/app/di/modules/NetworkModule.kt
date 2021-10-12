@@ -6,7 +6,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.rnd.app.BuildConfig
 import com.rnd.app.BuildConfig.BASE_URL
 import com.rnd.app.common.base.HeaderInterceptor
-import com.rnd.data.datasource.remote.api.ApiEndpoint
+import com.rnd.data.datasource.api.ApiEndpoint
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
