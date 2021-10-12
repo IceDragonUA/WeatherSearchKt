@@ -32,6 +32,6 @@ class MainActivity : AppCompatActivity() {
 
     fun initSearchListeners(searchFragment: SearchFragment){
         binding.toolbar.setSearchViewListener(searchFragment)
-        binding.toolbar.showSearchContainer()
+        binding.toolbar.requestFocusSearchContainer()
     }
 }

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.rnd.app.R
 import com.rnd.app.extension.showSoftKeyboard
-import com.rnd.app.extension.visible
 import kotlinx.android.synthetic.main.view_toolbar.view.*
 
 class ToolbarView @JvmOverloads constructor(
@@ -21,8 +20,7 @@ class ToolbarView @JvmOverloads constructor(
         viewSearch.searchListener = searchListener
     }
 
-    fun showSearchContainer() {
-        viewSearch.visible()
+    fun requestFocusSearchContainer() {
         viewSearch.requestFocus()
         viewSearch.showSoftKeyboard(true)
     }

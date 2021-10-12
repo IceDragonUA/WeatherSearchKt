@@ -22,18 +22,6 @@ fun ImageView.loadFromUrl(url: String) {
         .into(this)
 }
 
-fun View.gone() {
-    if (visibility != View.GONE) {
-        visibility = View.GONE
-    }
-}
-
-fun View.visible() {
-    if (visibility != View.VISIBLE) {
-        visibility = View.VISIBLE
-    }
-}
-
 fun View.showSoftKeyboard(show: Boolean) {
     val imm = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
     if (show) imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
