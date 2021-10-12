@@ -4,9 +4,9 @@ import com.rnd.app.di.modules.*
 
 val koinModules = listOf(
     navigationModule,
-    useCaseModule,
+    interactorModule,
     networkModule,
-    dataModule,
+    repositoryModule,
     commonModule,
     appModule
 )

@@ -11,7 +11,7 @@ import com.rnd.app.ui.search.adapter.WeatherAdapter
  * @author Vladyslav Havrylenko
  * @since 27.01.2021
  */
-class WeatherGridView : RecyclerView {
+class WeatherVerticalView : RecyclerView {
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)

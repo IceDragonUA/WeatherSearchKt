@@ -1,22 +1,23 @@
 package com.rnd.app.ui.search
 
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rnd.app.common.base.BaseViewModel
-import com.rnd.app.extension.Event
 import com.rnd.domain.core.Failure
 import com.rnd.domain.core.Success
-import com.rnd.domain.model.SearchResult
 import com.rnd.domain.interactor.SearchInteractor
+import com.rnd.domain.model.SearchResult
 import kotlinx.coroutines.*
+import org.koin.core.KoinComponent
 import org.koin.core.inject
 import timber.log.Timber
 
-class SearchViewModel : BaseViewModel() {
+class SearchViewModel : ViewModel(), LifecycleObserver, KoinComponent {
 
     private val searchUseCase: SearchInteractor by inject()
 
-    val items = MutableLiveData<MutableList<SearchResult>>()
+    val items = MutableLiveData<List<SearchResult>>()
 
     fun search(query: String) {
         synchronized(this) {
@@ -32,25 +33,20 @@ class SearchViewModel : BaseViewModel() {
         scope: CoroutineScope,
         query: String
     ) {
-        isLoading.postValue(Event(true))
-
         val searchResult = scope.async {
             searchUseCase.searchData(query)
         }
 
-        when (val searchResult = searchResult.await()) {
+        var list = listOf<SearchResult>()
+        when (val result = searchResult.await()) {
             is Success -> {
-                val list = mutableListOf<SearchResult>()
-                searchResult.payload?.let { data ->
-                    list.addAll(data)
+                result.payload?.let { data ->
+                    list = data
                 }
                 items.postValue(list)
-
-                isLoading.postValue(Event(false))
             }
             is Failure -> {
-                items.postValue(mutableListOf())
-                Timber.e("code: ${searchResult.error.code}, message: ${searchResult.error.message}")
+                Timber.e("code: ${result.error.code}, message: ${result.error.message}")
             }
         }
     }

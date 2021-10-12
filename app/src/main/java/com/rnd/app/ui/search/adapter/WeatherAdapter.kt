@@ -16,7 +16,7 @@ import kotlin.properties.Delegates
  */
 class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
-    var items: MutableList<SearchResult> by Delegates.observable(mutableListOf()) { _, _, _ ->
+    var items: List<SearchResult> by Delegates.observable(listOf()) { _, _, _ ->
         notifyDataSetChanged()
     }
 

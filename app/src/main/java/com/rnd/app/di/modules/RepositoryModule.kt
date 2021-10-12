@@ -9,6 +9,6 @@ import org.koin.dsl.module
  * @since 23.12.2020
  */
 
-val dataModule = module {
+val repositoryModule = module {
     single<SearchRepository> { SearchRepositoryImpl(api = get(), mapper = get()) }
 }
