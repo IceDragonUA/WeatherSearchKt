@@ -3,7 +3,7 @@ package com.rnd.app.ui.search.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.rnd.app.databinding.ViewItemBinding
+import com.rnd.app.databinding.ViewListItemBinding
 import com.rnd.app.extension.defIfNull
 import com.rnd.app.extension.loadFromUrl
 import com.rnd.domain.model.SearchResult
@@ -21,7 +21,7 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder =
-        WeatherViewHolder(ViewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        WeatherViewHolder(ViewListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.bind(getItem(position))
@@ -31,7 +31,7 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
 
     override fun getItemCount(): Int = items.count()
 
-    inner class WeatherViewHolder(private val itemBinding: ViewItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class WeatherViewHolder(private val itemBinding: ViewListItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(item: SearchResult) {
             itemBinding.apply {

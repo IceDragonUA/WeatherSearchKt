@@ -1,28 +1,37 @@
 package com.rnd.app.ui.main
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.rnd.app.R
-import com.rnd.app.common.base.BaseToolbarWrapper
 import com.rnd.app.databinding.ActivityMainBinding
-import com.rnd.app.ui.main.toolbar.SearchViewListener
-import com.rnd.app.viewBinding.activity.viewBinding
+import com.rnd.app.ui.search.SearchFragment
 
-class MainActivity : MainNavigationActivity(), BaseToolbarWrapper {
+class MainActivity : AppCompatActivity() {
 
-    override fun getNavControllerLayoutRes() = R.id.navHostFragment
+    private lateinit var binding: ActivityMainBinding
 
-    private val bindingView by viewBinding(ActivityMainBinding::bind, R.id.root_view)
+    private val navHostFragment: NavHostFragment by lazy {
+        supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+    }
+
+    private val navController: NavController by lazy {
+        navHostFragment.navController
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
-    override fun hideAll() = bindingView.toolbar.hideAll()
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
 
-    override fun showSearchView() = bindingView.toolbar.showSearchContainer()
-
-    override fun setSearchViewListener(searchListener: SearchViewListener) {
-        bindingView.toolbar.setSearchViewListener(searchListener)
+    fun initSearchListeners(searchFragment: SearchFragment){
+        binding.toolbar.setSearchViewListener(searchFragment)
+        binding.toolbar.showSearchContainer()
     }
 }
