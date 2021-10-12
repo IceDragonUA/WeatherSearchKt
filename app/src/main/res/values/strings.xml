@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">WEATHER</string>
+    <string name="app_name" translatable="false">Weather Search</string>
 
     <!-- search -->
     <string name="search_toolbar_hint">Введите город</string>
