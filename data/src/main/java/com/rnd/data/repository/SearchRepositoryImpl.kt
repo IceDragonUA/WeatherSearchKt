@@ -23,15 +23,20 @@ class SearchRepositoryImpl(
 
     override fun searchData(q: String): Flow<ResultModel<List<SearchResult>>> {
         return flow {
+            emit(ResultModel.success(databaseMapper.mapFrom(dao.getList())))
             emit(ResultModel.loading())
             val result = getResponse({ api.search(q) }, networkMapper)
-            if (result.status == ResultModel.Status.SUCCESS) {
-                result.data?.let { it ->
-                    dao.deleteAll()
-                    dao.insertAll(databaseMapper.map(it))
-                }
-            }
+            emitCache(result)
             emit(result)
         }.flowOn(Dispatchers.IO)
+    }
+
+    private suspend fun emitCache(result: ResultModel<List<SearchResult>>) {
+        if (result.status == ResultModel.Status.SUCCESS) {
+            result.data?.let { it ->
+                dao.deleteAll()
+                dao.insertAll(databaseMapper.mapTo(it))
+            }
+        }
     }
 }
