@@ -1,8 +1,10 @@
 package com.rnd.app.di.modules
 
-import com.rnd.data.mapper.SearchMapper
+import com.rnd.data.mapper.DatabaseSearchMapper
+import com.rnd.data.mapper.NetworkSearchMapper
 import org.koin.dsl.module
 
 val commonModule = module {
-    single { SearchMapper() }
+    single { NetworkSearchMapper() }
+    single { DatabaseSearchMapper() }
 }

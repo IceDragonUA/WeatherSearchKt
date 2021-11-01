@@ -4,12 +4,12 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.rnd.data.datasource.local.model.WeatherInfo.Companion.DB_TABLE_NAME
+import com.rnd.data.datasource.local.model.LocalSearchResultResponse.Companion.DB_TABLE_NAME
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity(tableName = DB_TABLE_NAME)
-data class WeatherInfo(
+data class LocalSearchResultResponse(
     @PrimaryKey
     @ColumnInfo(name = DB_FIELD_ID)
     val id: String,

@@ -4,7 +4,7 @@ import com.rnd.data.common.RemoteEntityToDomainMapper
 import com.rnd.data.datasource.remote.model.RemoteSearchResultResponse
 import com.rnd.domain.model.SearchResult
 
-class SearchMapper: RemoteEntityToDomainMapper<RemoteSearchResultResponse, List<SearchResult>>() {
+class NetworkSearchMapper: RemoteEntityToDomainMapper<RemoteSearchResultResponse, List<SearchResult>>() {
 
     companion object {
         const val TEMP_VALUE = "°C"

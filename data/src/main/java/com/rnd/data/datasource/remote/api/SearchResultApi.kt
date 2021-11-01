@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ApiEndpoint {
+interface SearchResultApi {
 
     @GET("/find")
     suspend fun search(@Query("q") q: String): Response<RemoteSearchResultResponse>

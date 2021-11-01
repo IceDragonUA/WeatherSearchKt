@@ -3,7 +3,7 @@ package com.rnd.app.di.modules
 import android.app.Application
 import androidx.room.Room
 import com.rnd.data.datasource.local.AppDb
-import com.rnd.data.datasource.local.dao.WeatherDao
+import com.rnd.data.datasource.local.dao.SearchResultDao
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -23,4 +23,4 @@ private fun provideAppDb(app: Application): AppDb {
         .build()
 }
 
-private fun provideWeatherDao(db: AppDb): WeatherDao = db.weatherDao()
+private fun provideWeatherDao(db: AppDb): SearchResultDao = db.weatherDao()

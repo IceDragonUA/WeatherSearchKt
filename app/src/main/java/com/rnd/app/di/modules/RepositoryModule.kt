@@ -10,5 +10,12 @@ import org.koin.dsl.module
  */
 
 val repositoryModule = module {
-    single<SearchRepository> { SearchRepositoryImpl(api = get(), mapper = get()) }
+    single<SearchRepository> {
+        SearchRepositoryImpl(
+            api = get(),
+            dao = get(),
+            networkMapper = get(),
+            databaseMapper = get()
+        )
+    }
 }
