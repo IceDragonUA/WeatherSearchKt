@@ -1,8 +1,6 @@
 package com.rnd.app.di.modules
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.rnd.app.BuildConfig
 import com.rnd.app.BuildConfig.BASE_URL
 import com.rnd.app.common.base.HeaderInterceptor
@@ -20,8 +18,7 @@ val networkModule = module {
     factory {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .addConverterFactory(GsonConverterFactory.create(makeGson()))
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .client(get())
             .build()
     }
@@ -49,9 +46,4 @@ private fun addLoggingInterceptor(
     val loggingInterceptor = HttpLoggingInterceptor()
     loggingInterceptor.level = logLevel
     httpClient.addInterceptor(loggingInterceptor)
-}
-
-fun makeGson(
-): Gson {
-    return GsonBuilder().create()
 }

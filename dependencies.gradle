@@ -30,7 +30,7 @@ ext {
     coroutinesRetrofitVersion = '0.9.2'
     coroutinesVersion = '1.4.2'
     multidexVersion = '1.0.3'
-    gsonVersion = '2.8.6'
+    gsonVersion = '2.8.5'
     timberVersion = '4.7.1'
     armadilloVersion = '0.11.0'
     androidPagination = '3.0.0-alpha03'

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.rnd.app.databinding.FragmentSearchBinding
 import com.rnd.app.extension.root
 import com.rnd.app.ui.main.toolbar.SearchViewListener
+import com.rnd.domain.core.ResultModel
 
 class SearchFragment : Fragment(), SearchViewListener {
 
@@ -29,8 +30,20 @@ class SearchFragment : Fragment(), SearchViewListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.root()?.initSearchListeners(this@SearchFragment)
-        viewModel.items.observe(viewLifecycleOwner, {
-            binding?.list?.setItems(it)
+        viewModel.items.observe(viewLifecycleOwner, { result ->
+            when (result.status) {
+                ResultModel.Status.LOADING -> {
+
+                }
+                ResultModel.Status.SUCCESS -> {
+                    result.data?.let {
+                        binding?.list?.setItems(it)
+                    }
+                }
+                ResultModel.Status.ERROR -> {
+
+                }
+            }
         })
     }
 
