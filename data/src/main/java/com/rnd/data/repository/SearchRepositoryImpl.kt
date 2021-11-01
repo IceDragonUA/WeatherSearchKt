@@ -23,8 +23,8 @@ class SearchRepositoryImpl(
 
     override fun searchData(q: String): Flow<ResultModel<List<SearchResult>>> {
         return flow {
-            emit(ResultModel.success(databaseMapper.mapFrom(dao.getList())))
             emit(ResultModel.loading())
+            emit(ResultModel.success(databaseMapper.mapFrom(dao.getList())))
             val result = getResponse({ api.search(q) }, networkMapper)
             emitCache(result)
             emit(result)
