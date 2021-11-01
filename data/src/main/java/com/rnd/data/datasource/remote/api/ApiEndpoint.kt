@@ -1,4 +1,4 @@
-package com.rnd.data.datasource.api
+package com.rnd.data.datasource.remote.api
 
 import com.rnd.data.datasource.model.RemoteSearchResultResponse
 import retrofit2.Response

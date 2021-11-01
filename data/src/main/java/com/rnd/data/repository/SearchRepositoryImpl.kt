@@ -1,7 +1,7 @@
 package com.rnd.data.repository
 
 import com.rnd.data.common.RepositoryBaseImpl
-import com.rnd.data.datasource.api.ApiEndpoint
+import com.rnd.data.datasource.remote.api.ApiEndpoint
 import com.rnd.data.mapper.SearchMapper
 import com.rnd.domain.core.ResultModel
 import com.rnd.domain.model.SearchResult
