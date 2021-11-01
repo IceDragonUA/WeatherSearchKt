@@ -33,15 +33,16 @@ class SearchFragment : Fragment(), SearchViewListener {
         viewModel.items.observe(viewLifecycleOwner, { result ->
             when (result.status) {
                 ResultModel.Status.LOADING -> {
-
+                    binding?.loading?.visibility = View.VISIBLE
                 }
                 ResultModel.Status.SUCCESS -> {
+                    binding?.loading?.visibility = View.GONE
                     result.data?.let {
                         binding?.list?.setItems(it)
                     }
                 }
                 ResultModel.Status.ERROR -> {
-
+                    binding?.loading?.visibility = View.GONE
                 }
             }
         })
