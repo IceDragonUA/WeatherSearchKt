@@ -7,5 +7,6 @@ val koinModules = listOf(
     interactorModule,
     repositoryModule,
     commonModule,
-    networkModule
+    networkModule,
+    databaseModule
 )

@@ -44,6 +44,10 @@ dependencies {
     implementation dataDependencies.retrofit
     implementation dataDependencies.retrofitConverterGson
     implementation dataDependencies.retrofitCoroutinesAdapter
+    implementation dataDependencies.roomRuntime
+    kapt dataDependencies.roomCompiler
+    implementation dataDependencies.roomKtx
+    implementation dataDependencies.roomTesting
     implementation dataDependencies.coroutinesAndroid
     implementation dataDependencies.gson
     implementation dataDependencies.timber

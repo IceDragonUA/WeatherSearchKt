@@ -81,6 +81,7 @@ dependencies {
     implementation appDependencies.retrofit
     implementation appDependencies.retrofitConverterGson
     implementation appDependencies.retrofitCoroutinesAdapter
+    implementation appDependencies.roomRuntime
     implementation appDependencies.coroutinesCore
     implementation appDependencies.coroutinesAndroid
     implementation appDependencies.okHttp

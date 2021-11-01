@@ -2,7 +2,7 @@ package com.rnd.data.common
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.rnd.data.datasource.model.RemoteResponseError
+import com.rnd.data.datasource.remote.model.RemoteResponseError
 import com.rnd.domain.core.ErrorModel
 import com.rnd.domain.core.ResultModel
 import okhttp3.ResponseBody

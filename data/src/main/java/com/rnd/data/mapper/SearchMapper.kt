@@ -1,7 +1,7 @@
 package com.rnd.data.mapper
 
 import com.rnd.data.common.RemoteEntityToDomainMapper
-import com.rnd.data.datasource.model.RemoteSearchResultResponse
+import com.rnd.data.datasource.remote.model.RemoteSearchResultResponse
 import com.rnd.domain.model.SearchResult
 
 class SearchMapper: RemoteEntityToDomainMapper<RemoteSearchResultResponse, List<SearchResult>>() {
